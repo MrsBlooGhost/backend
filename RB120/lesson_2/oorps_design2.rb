@@ -118,8 +118,8 @@ class RPSGame
       puts "Sorry, must be y or n."
     end
 
-    return false if answer.downcase == 'n'
     return true if answer.downcase == 'y'
+    return false if answer.downcase == 'n'
   end
 
   def play
@@ -128,6 +128,7 @@ class RPSGame
     loop do
       human.choose
       computer.choose
+      display_moves
       display_winner
       break unless play_again?
     end
