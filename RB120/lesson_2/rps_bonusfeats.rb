@@ -1,7 +1,15 @@
 class Move
   attr_reader :value
 
-  VALUES = ['rock', 'paper', 'scissors', 'lizard', 'spock']
+  VALUES =
+    {
+      'r' => 'rock',
+      'p' => 'paper',
+      'sc' => 'scissors',
+      'l' => 'lizard',
+      'sp' => 'spock'
+    }
+
   GAME_LOGIC =
     {
       'rock' => ['lizard', 'scissors'],
@@ -43,7 +51,7 @@ class Human < Player
     loop do
       puts "What's your name?"
       n = gets.chomp
-      break unless n.empty?
+      break unless n.strip.empty?
       puts "Sorry, you must enter a name."
     end
     puts
@@ -53,12 +61,12 @@ class Human < Player
   def choose
     choice = nil
     loop do
-      puts "Please choose rock, paper, scissors, lizard, or spock:"
+      puts "Please choose: rock (r), paper (p), scissors (sc), lizard (l), or spock (sp):"
       choice = gets.chomp
-      break if Move::VALUES.include?(choice)
+      break if Move::VALUES.keys.include?(choice.downcase)
       puts "Sorry, invalid choice."
     end
-    self.move = Move.new(choice)
+    self.move = Move.new(Move::VALUES[choice.downcase])
   end
 end
 
