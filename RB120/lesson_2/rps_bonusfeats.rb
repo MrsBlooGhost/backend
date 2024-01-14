@@ -112,7 +112,7 @@ class RPSGame
   end
 
   def update_history
-    history[round] = [human.move.to_s, computer.move.to_s]
+    history[round] = [human.move.value, computer.move.value]
   end
 
   def display_history
