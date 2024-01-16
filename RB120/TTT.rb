@@ -6,21 +6,29 @@ Step 2 - Set up `Board` and `Square` classes
 =end
 
 #-------------------Board----------------
+require 'pry'
+
 class Board
   INITIAL_MARKER = ' '
 
   def initialize
     @squares = {}
-    (1..9).each { |key| @squares[key] = Square.new(INITIAL_MARKER) }
+    (1..9).each { |key| @squares[key] = Square.new(INITIAL_MARKER) } # key is sq num
   end
 
-  def get_square_at(key)
-    @squares[key]
+  def get_square_at(key) # key is sq num
+    @squares[key] # key is sq num
+  end
+
+  def set_square_at(key, marker) # key is sq num
+    @squares[key].marker = marker # key is sq num
   end
 end
 
 #--------------------Square--------------
 class Square
+  attr_accessor :marker
+
   def initialize(marker)
     @marker = marker
   end
@@ -32,20 +40,21 @@ end
 
 #--------------------Player--------------
 class Player
-  def initialize
-    # a marker to keep track of this Player's symbol (i.e. 'X' or 'O')
-  end
+  attr_reader :marker
 
-  def mark
+  def initialize(marker)
+    @marker = marker
   end
 end
 
 #--------Game Orchestration Engine--------
 class TTTGame
-  attr_reader :board
+  attr_reader :board, :human, :computer
 
   def initialize
     @board = Board.new
+    @human = Player.new('X')
+    @computer = Player.new('O')
   end
 
   def display_welcome_message
@@ -72,14 +81,27 @@ class TTTGame
     puts
   end
 
+  def human_moves
+    puts "Choose a square between 1-9: "
+    square = nil
+    loop do
+      square = gets.chomp.to_i
+      break if (1..9).include?(square)
+      puts "Sorry, that's not a valid choice."
+    end
+
+    board.set_square_at(square, human.marker)
+  end
+
   def play
     display_welcome_message
     # loop do
        display_board
-    #   first_player_moves
+       human_moves
+       display_board
     #   break if someone_won? || board_full?
 
-    #   second_player_moves
+       computer_moves
     #   break if someone_won? || board_full?
     # end
     # display_result
