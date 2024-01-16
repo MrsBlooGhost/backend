@@ -2,9 +2,8 @@
 Description:
   Tic Tac Toe is a 2-player board game played on a 3x3 grid. Players take turns marking a square. The first player to mark 3 squares in a row wins.
 
-Step 3 - Human Moves
+Step 4 - Computer Moves
 =end
-
 #-------------------Board----------------
 require 'pry'
 
@@ -49,12 +48,15 @@ end
 
 #--------Game Orchestration Engine--------
 class TTTGame
+  HUMAN_MARKER = 'X'
+  COMPUTER_MARKER = 'O'
+
   attr_reader :board, :human, :computer
 
   def initialize
     @board = Board.new
-    @human = Player.new('X')
-    @computer = Player.new('O')
+    @human = Player.new(HUMAN_MARKER)
+    @computer = Player.new(COMPUTER_MARKER)
   end
 
   def display_welcome_message
@@ -93,6 +95,11 @@ class TTTGame
     board.set_square_at(square, human.marker)
   end
 
+  def computer_moves
+    square = (1..9).to_a.sample
+    board.set_square_at(square, computer.marker)
+  end
+
   def play
     display_welcome_message
     # loop do
@@ -102,6 +109,7 @@ class TTTGame
     #   break if someone_won? || board_full?
 
        computer_moves
+       display_board
     #   break if someone_won? || board_full?
     # end
     # display_result
