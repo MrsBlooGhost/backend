@@ -2,7 +2,7 @@
 Description:
   Tic Tac Toe is a 2-player board game played on a 3x3 grid. Players take turns marking a square. The first player to mark 3 squares in a row wins.
 
-Step 1 - Set up `Board` and `Square` classes
+Step 2 - Set up `Board` and `Square` classes
 =end
 
 #-------------------Board----------------
