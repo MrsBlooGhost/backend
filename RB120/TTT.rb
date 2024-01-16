@@ -2,17 +2,15 @@
 Description:
   Tic Tac Toe is a 2-player board game played on a 3x3 grid. Players take turns marking a square. The first player to mark 3 squares in a row wins.
 
-Step 5 - Take Turns
+Step 6 - Break When Board is Full
 =end
 #-------------------Board----------------
 require 'pry'
 
 class Board
-  INITIAL_MARKER = ' '
-
   def initialize
     @squares = {}
-    (1..9).each { |key| @squares[key] = Square.new(INITIAL_MARKER) } # key is sq num
+    (1..9).each { |key| @squares[key] = Square.new } # key is sq num
   end
 
   def get_square_at(key) # key is sq num
@@ -26,13 +24,19 @@ class Board
   def unmarked_keys # return array of integers representing unmarked squares
     @squares.keys.select { |key| @squares[key].unmarked? }
   end
+
+  def full?
+    unmarked_keys.empty?
+  end
 end
 
 #--------------------Square--------------
 class Square
+  INITIAL_MARKER = ' '
+
   attr_accessor :marker
 
-  def initialize(marker)
+  def initialize(marker = INITIAL_MARKER)
     @marker = marker
   end
 
@@ -41,7 +45,7 @@ class Square
   end
 
   def unmarked?
-    @marker == Board::INITIAL_MARKER
+    @marker == INITIAL_MARKER
   end
 end
 
@@ -77,6 +81,8 @@ class TTTGame
   end
 
   def display_board
+    system 'clear'
+    puts "You're a #{human.marker}. Computer is a #{computer.marker}."
     puts "     |     |"
     puts "  #{board.get_square_at(1)}  |  #{board.get_square_at(2)}  |  #{board.get_square_at(3)}"
     puts "     |     |"
@@ -108,20 +114,27 @@ class TTTGame
     board.set_square_at(square, computer.marker)
   end
 
+  def display_result
+    display_board
+    puts "The board is full!"
+  end
+
   def play
     display_welcome_message
     display_board
 
     loop do
       human_moves
+      break if board.full?
     #   break if someone_won? || board_full?
 
       computer_moves
+      break if board.full?
       display_board
     #   break if someone_won? || board_full?
     end
 
-    # display_result
+    display_result
     display_goodbye_message
   end
 end
