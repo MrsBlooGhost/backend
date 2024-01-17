@@ -2,12 +2,16 @@
 Description:
   Tic Tac Toe is a 2-player board game played on a 3x3 grid. Players take turns marking a square. The first player to mark 3 squares in a row wins.
 
-Step 6 - Break When Board is Full
+Step 7 - Detect Winner
 =end
 #-------------------Board----------------
 require 'pry'
 
 class Board
+  WINNING_LINES = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] + # rows
+                [[1, 4, 7], [2, 5, 8], [3, 6, 9]] + # columns
+                [[1, 5, 9], [3, 5, 7]] # diagonals
+
   def initialize
     @squares = {}
     (1..9).each { |key| @squares[key] = Square.new } # key is sq num
@@ -27,6 +31,21 @@ class Board
 
   def full?
     unmarked_keys.empty?
+  end
+
+  def someone_won?
+    !!detect_winner
+  end
+
+  def detect_winner
+    WINNING_LINES.each do |line|
+      if @squares[line[0]].marker == TTTGame::HUMAN_MARKER && @squares[line[1]].marker == TTTGame::HUMAN_MARKER && @squares[line[2]].marker == TTTGame::HUMAN_MARKER
+        return TTTGame::HUMAN_MARKER
+      elsif @squares[line[0]].marker == TTTGame::COMPUTER_MARKER && @squares[line[1]].marker == TTTGame::COMPUTER_MARKER && @squares[line[2]].marker == TTTGame::COMPUTER_MARKER
+        return TTTGame::COMPUTER_MARKER
+      end
+    end
+    nil
   end
 end
 
@@ -83,6 +102,7 @@ class TTTGame
   def display_board
     system 'clear'
     puts "You're a #{human.marker}. Computer is a #{computer.marker}."
+    puts
     puts "     |     |"
     puts "  #{board.get_square_at(1)}  |  #{board.get_square_at(2)}  |  #{board.get_square_at(3)}"
     puts "     |     |"
@@ -116,7 +136,14 @@ class TTTGame
 
   def display_result
     display_board
-    puts "The board is full!"
+    case board.detect_winner
+    when human.marker
+      puts "Human won!"
+    when computer.marker
+      puts "Computer won!"
+    else
+      puts "The board is full!"
+    end
   end
 
   def play
@@ -125,13 +152,11 @@ class TTTGame
 
     loop do
       human_moves
-      break if board.full?
-    #   break if someone_won? || board_full?
+      break if board.someone_won? || board.full?
 
       computer_moves
-      break if board.full?
+      break if board.someone_won? || board.full?
       display_board
-    #   break if someone_won? || board_full?
     end
 
     display_result
