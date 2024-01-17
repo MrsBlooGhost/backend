@@ -2,7 +2,7 @@
 Description:
   Tic Tac Toe is a 2-player board game played on a 3x3 grid. Players take turns marking a square. The first player to mark 3 squares in a row wins.
 
-Step 7 - Detect Winner
+Step 8 - Refactor `detect_winner`
 =end
 #-------------------Board----------------
 require 'pry'
@@ -37,11 +37,19 @@ class Board
     !!detect_winner
   end
 
+  def count_human_marker(squares)
+    squares.collect(&:marker).count(TTTGame::HUMAN_MARKER)
+  end
+
+  def count_computer_marker(squares)
+    squares.collect(&:marker).count(TTTGame::COMPUTER_MARKER)
+  end
+
   def detect_winner
     WINNING_LINES.each do |line|
-      if @squares[line[0]].marker == TTTGame::HUMAN_MARKER && @squares[line[1]].marker == TTTGame::HUMAN_MARKER && @squares[line[2]].marker == TTTGame::HUMAN_MARKER
+      if count_human_marker(@squares.values_at(*line)) == 3
         return TTTGame::HUMAN_MARKER
-      elsif @squares[line[0]].marker == TTTGame::COMPUTER_MARKER && @squares[line[1]].marker == TTTGame::COMPUTER_MARKER && @squares[line[2]].marker == TTTGame::COMPUTER_MARKER
+      elsif count_computer_marker(@squares.values_at(*line)) == 3
         return TTTGame::COMPUTER_MARKER
       end
     end
@@ -142,7 +150,7 @@ class TTTGame
     when computer.marker
       puts "Computer won!"
     else
-      puts "The board is full!"
+      puts "It's a tie!"
     end
   end
 
