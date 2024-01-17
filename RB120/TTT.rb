@@ -2,7 +2,7 @@
 Description:
   Tic Tac Toe is a 2-player board game played on a 3x3 grid. Players take turns marking a square. The first player to mark 3 squares in a row wins.
 
-Step 8 - Refactor `detect_winner`
+Step 9 - Play Again
 =end
 #-------------------Board----------------
 require 'pry'
@@ -14,7 +14,7 @@ class Board
 
   def initialize
     @squares = {}
-    (1..9).each { |key| @squares[key] = Square.new } # key is sq num
+    reset
   end
 
   def get_square_at(key) # key is sq num
@@ -54,6 +54,10 @@ class Board
       end
     end
     nil
+  end
+
+  def reset
+    (1..9).each { |key| @squares[key] = Square.new } # key is sq num
   end
 end
 
@@ -107,8 +111,8 @@ class TTTGame
     puts "Thanks for playing Tic Tac Toe! Goodbye!"
   end
 
-  def display_board
-    system 'clear'
+  def display_board(clear = true)
+    system 'clear' if clear
     puts "You're a #{human.marker}. Computer is a #{computer.marker}."
     puts
     puts "     |     |"
@@ -154,20 +158,41 @@ class TTTGame
     end
   end
 
-  def play
-    display_welcome_message
-    display_board
-
+  def play_again?
+    answer = nil
     loop do
-      human_moves
-      break if board.someone_won? || board.full?
-
-      computer_moves
-      break if board.someone_won? || board.full?
-      display_board
+      puts "Would you like to play again (y/n)?"
+      answer = gets.chomp.downcase
+      break if %w(y n).include?(answer)
+      puts "Sorry, must be y or n."
     end
 
-    display_result
+    answer == 'y'
+  end
+
+  def play
+    system 'clear'
+    display_welcome_message
+
+    loop do
+    display_board(false)
+
+      loop do
+        human_moves
+        break if board.someone_won? || board.full?
+
+        computer_moves
+        break if board.someone_won? || board.full?
+        display_board
+      end
+
+      display_result
+      break unless play_again?
+      board.reset
+      system 'clear'
+      puts "Let's play again!"
+      puts
+    end
     display_goodbye_message
   end
 end
