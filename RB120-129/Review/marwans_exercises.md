@@ -41,7 +41,7 @@ tom.id # => 45
 
 ---
 
-9 -
+#9
 
 > What will the last three lines of code print to the console?
 
@@ -57,5 +57,11 @@ Line 18: `"STEVIE WONDER"` - Getter method `artist` returns the value of `@artis
 
 ---
 
-10 -
+#10
 
+> What will the last 2 lines output in this case?
+
+`"STEVIE WONDER"`
+`"STEVIE WONDER"`
+
+Although setter methods return the argument/s passed upon invocation, the destructive method call `name.upcase!` affects the value of `@artist` because local variable `name` and instance variable `@name` both point to the same string object.
