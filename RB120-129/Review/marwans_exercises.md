@@ -72,7 +72,7 @@ Although setter methods return the argument/s passed upon invocation, the destru
 
 > What does `cat.name` on the last line return?
 
-`nil` - On line 13, we call the getter method `name`, which returns the value of `@name`. `@name` is an uninitialized instance variable, and all uninitialized instance variables return `nil`.
+`nil` - On line 15, we call the getter method `name`, which returns the value of `@name`. `@name` is an uninitialized instance variable, and all uninitialized instance variables return `nil`.
 
 > What is occurring on line 9?
 
