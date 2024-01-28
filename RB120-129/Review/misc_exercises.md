@@ -178,4 +178,4 @@ class Foo::Bar
 end
 ```
 
-When we use the syntax `class Foo::Bar`, we are defining a new class `Bar` inside the `Foo` module. However, this doesn't automatically give the new `Bar` class access to the constants defined in the `Foo` module. In order to give the new `Bar` class acess to the constants defined in the `Foo` module, we would have to `include` the module in the `Bar` class definition.
+When we use the syntax `class Foo::Bar`, we are defining a new class `Bar` inside the `Foo` module. However, this doesn't automatically give the new `Bar` class access to the constants defined in the `Foo` module. In order to give the new `Bar` class access to the constants defined in the `Foo` module, we would have to `include` the module in the `Bar` class definition.
