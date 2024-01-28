@@ -59,7 +59,7 @@ Line 18: `"STEVIE WONDER"` - Getter method `artist` returns the value of `@artis
 
 #10
 
-> What will the last 2 lines output in this case?
+> What do the last two lines of code output?
 
 `"STEVIE WONDER"`
 `"STEVIE WONDER"`
@@ -109,3 +109,13 @@ cat = Cat.new
 cat.set_name
 cat.name
 ```
+
+---
+
+# 12
+
+> What do the last two lines of code output?
+
+`[Bugs, Bunny, Run, Walk, Jump, Object, Kernel, BasicObject]` - Calling the `Module#ancestors` method on a class returns an array of classes and modules in the lookup path.
+
+`"Running"` - When Ruby resolves a constant, it first searches in the constant's lexical scope, then in the inheritance hierarchy, and lastly, in the main scope. Once Ruby finds the constant definition, it stops searching. In this case, Ruby doesn't find `STR` defined in the lexical scope, class `Bugs`. Ruby then looks up the inheritance hierarchy (`Bunny, Run, Walk, Jump, Object, Kernel, BasicObject`) and finds the constant `STR` initialized in module `Jump`.
