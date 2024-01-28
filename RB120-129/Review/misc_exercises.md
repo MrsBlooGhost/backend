@@ -126,7 +126,7 @@ cat.name
 
 > What is returned on the last two lines of code?
 
-`"Local"`
+`"Local"`\
 `"Global"`
 
 This demonstrates how Ruby resolves a constant, first searching lexically for it.
