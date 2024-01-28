@@ -247,6 +247,7 @@ A class variable is shared among the superclass and all of its subclasses. There
 
 > Update the `Human` class so that lines 13 and 16 return the desired output.
 
+```ruby
 class Human
   attr_reader :name
 
@@ -269,3 +270,5 @@ puts Human.new("Jo").hair_color("blonde")
 
 puts Human.hair_color("")
 # Should output "Hi, my name is Dylan and I have blonde hair."
+```
+
