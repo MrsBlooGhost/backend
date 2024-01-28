@@ -1,4 +1,8 @@
+=begin
 Link: https://medium.com/@marwan.zaarab/rb129-interview-assessment-prep-e2f120330240
+
+My Gist: https://gist.github.com/MrsBlooGhost/b6173754c093823d1d7f1cca04a01e90#file-rb120-129_-1-rb
+=end
 
 =begin
 #1 - What will the following code output? Why?
