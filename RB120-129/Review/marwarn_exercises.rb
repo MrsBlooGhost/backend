@@ -68,24 +68,16 @@ Interface inheritance is demonstrated here. Ruby does not support multiple inher
 # On line _, `self` refers to an instance of the class `MeMyselfAndI`, which is the receiver of the method `myself`.
 
 
-# 10 — What will the last 2 lines output in this case?
+# 11 — What does `cat.name` on the last line return?
 
+class Cat
+  attr_accessor :name
 
-class Song
-  attr_reader :title, :artist
-
-  def initialize(title)
-    @title = title
-  end
-
-  def artist=(name)
-    @artist = name
-    name.upcase!
+  def set_name
+    @name = "Cheetos"
   end
 end
 
-song = Song.new("Superstition")
-person = "Stevie Wonder"
-p song.artist = person
-p song.artist
-p person
+cat = Cat.new
+cat.set_name
+p cat.name # => nil

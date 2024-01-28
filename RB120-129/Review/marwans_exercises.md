@@ -65,3 +65,47 @@ Line 18: `"STEVIE WONDER"` - Getter method `artist` returns the value of `@artis
 `"STEVIE WONDER"`
 
 Although setter methods return the argument/s passed upon invocation, the destructive method call `name.upcase!` affects the value of `@artist` because local variable `name` and instance variable `@name` both point to the same string object.
+
+---
+
+#11
+
+> What does `cat.name` on the last line return?
+
+`nil` - On line 13, we call the getter method `name`, which returns the value of `@name`. `@name` is an uninitialized instance variable, and all uninitialized instance variables return `nil`.
+
+> What is occurring on line 9?
+
+Local variable initialization
+
+> What two modifications to line 9 can be made so that `cat.name` returns `"Cheetos"`?
+
+The following two modifications can be made so that `cat.name` returns `"Cheetos"`.
+
+```ruby
+class Cat
+  attr_accessor :name
+
+  def set_name
+    @name = "Cheetos"
+  end
+end
+
+cat = Cat.new
+cat.set_name
+cat.name
+```
+
+```ruby
+class Cat
+  attr_accessor :name
+
+  def set_name
+    self.name = "Cheetos"
+  end
+end
+
+cat = Cat.new
+cat.set_name
+cat.name
+```
