@@ -68,19 +68,29 @@ Interface inheritance is demonstrated here. Ruby does not support multiple inher
 # On line _, `self` refers to an instance of the class `MeMyselfAndI`, which is the receiver of the method `myself`.
 
 
-# 15 — What do the last two lines of code output?
+# 16 — Update the `Human` class so that lines 13 and 16 return the desired output.
 
-class Foo
-  @@var = 1
+# Problem taken from tinyurl.com/mr42tf4t, creator: Raul Romero
 
-  def self.var
-    @@var
+class Human
+  attr_reader :name
+
+  def initialize(name="Dylan")
+    @name = name
+  end
+
+  def hair_color(color)
+    "Hi, my name is #{name} and I have #{color} hair."
+  end
+
+  def self.hair_color(color)
+    color = "blonde" if color.empty?
+    "Hi, my name is #{self.new.name} and I have #{color} hair."
   end
 end
 
-class Bar < Foo
-  @@var = 2
-end
+puts Human.new("Jo").hair_color("blonde")
+# Should output "Hi, my name is Jo and I have blonde hair."
 
-puts Foo.var # 2
-puts Bar.var # 2
+puts Human.hair_color("")
+# Should "Hi, my name is Dylan and I have blonde hair."
