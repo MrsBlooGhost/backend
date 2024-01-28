@@ -43,7 +43,7 @@ tom.id # => 45
 
 9 -
 
-**What will the last three lines of code print to the console?**
+> What will the last three lines of code print to the console?
 
 Line 16: `inspect` is called on an instance of the `Song` class, which outputs the class `Song`, an encoding of the object ID, and the initialized instance variable `@title` along with its value `Superstitition`.
 
