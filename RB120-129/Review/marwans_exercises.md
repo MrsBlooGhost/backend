@@ -45,15 +45,15 @@ tom.id # => 45
 
 > What will the last three lines of code print to the console?
 
-Line 16: `inspect` is called on an instance of the `Song` class, which outputs the class `Song`, an encoding of the object ID, and the initialized instance variable `@title` along with its value `Superstitition`.
+Line 16: `#<Song:0x00007f50f4738128 @title="Superstition">` - Calling `inspect` on an object outputs the class name (`Song`), an encoding of the object's ID, and any initialized instance variables along with their values (`@title="Superstitition"`).
 
-Line 17: Setter methods return the argument passed in, so `"Stevie Wonder"` is output.
+Line 17: `"Stevie Wonder"` - Setter methods return the argument passed at method invocation.
 
-Line 18: Getter method `artist` returns the value of `@artist`, which references `"STEVIE WONDER"`.
+Line 18: `"STEVIE WONDER"` - Getter method `artist` returns the value of `@artist`.
 
-**After `song.artist` is called, what would be returned if we inspect the `song` object?**
+> After `song.artist` is called, what would be returned if we inspect the `song` object?
 
-The `Song` class, an encoding of the object ID, and initialized instance variables with their values: `<Song:(encoding of obj ID) @title="Superstition" @name="STEVIE WONDER">`
+`#<Song:0x00007f50f4738128 @title="Superstition", @artist="STEVIE WONDER">` - At this point, `@artist` has been initialized. Therefore, what's output is the class name (`Song`), an encoding of the object's ID, and any initialized instance variables along with their values (`@title="Superstitition @artist="STEVIE WONDER"`).
 
 ---
 

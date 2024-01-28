@@ -84,6 +84,7 @@ class Song
 end
 
 p song = Song.new("Superstition")
+p song.artist
 p song.artist = "Stevie Wonder"
 p song.artist
 p song
