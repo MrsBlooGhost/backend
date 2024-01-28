@@ -1,21 +1,3 @@
-#1 - What will the following code output? Why?
-
-class Student
-  attr_reader :id
-
-  def initialize(name)
-    @name = name
-    @id
-  end
-
-  def id=(value)
-    @id = value
-  end
-end
-
-tom = Student.new("Tom")
-p tom.id = 45
-
 # module Greet
 #   def greet(message)
 #     puts message
@@ -84,3 +66,29 @@ Interface inheritance is demonstrated here. Ruby does not support multiple inher
 # On line _, `self` refers to class `MeMyselfAndI`.
 
 # On line _, `self` refers to an instance of the class `MeMyselfAndI`, which is the receiver of the method `myself`.
+
+
+# 9 — What will the last three lines of code print to the console? After song.artist is called, what would be returned if we inspect the song object?
+
+class Song
+  attr_reader :title, :artist
+
+  def initialize(title)
+    @title = title
+    @artist
+  end
+
+  def artist=(name)
+    @artist = name.upcase
+  end
+end
+
+p song = Song.new("Superstition")
+p song.artist = "Stevie Wonder"
+p song.artist
+
+# Line 16: `inspect` is called on an instance of the `Song` class, which outputs the class `Song`, an encoding of the object ID, and the initialized instance variable `@title` along with its value `Superstitition`.
+
+# Line 17: Setter methods return the argument passed in, so `"Stevie Wonder"` is output.
+
+# Line 18: Getter method `artist` returns the value of `@artist`, which references `"STEVIE WONDER"`.
