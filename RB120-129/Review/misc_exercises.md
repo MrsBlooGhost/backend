@@ -229,3 +229,14 @@ puts tom[0]      # => Amber
 puts tom.friends # => Amber
                  # => John
 ```
+
+---
+
+#15
+
+> What do the last two lines of code output?
+
+`2`\
+`2`
+
+A class variable is shared among the superclass and all of its subclasses. Therefore, class variable re-assignment in a subclass affects the value of the class variable in the superclass and in all of its other subclasses.
