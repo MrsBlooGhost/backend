@@ -68,27 +68,47 @@ Interface inheritance is demonstrated here. Ruby does not support multiple inher
 # On line _, `self` refers to an instance of the class `MeMyselfAndI`, which is the receiver of the method `myself`.
 
 
-# VAL = 'Global'
+# 14 — Write 3 methods inside the Person class and one method in the Friend class that would return the outputs shown on lines 23 and 24.
+# (question edited/improved by @bboinay and @dchae)
 
-module Foo
-  VAL = 'Local'
+class Person
+  attr_reader :friends
 
-  class Bar
-  # include Foo
+  def initialize
+    @friends = []
+  end
 
-    def value1
-      VAL
-    end
+  def <<(friend)
+    @friends << friend
+  end
+
+  def []=(idx, friend)
+    @friends[idx] = friend
+  end
+
+  def [](idx)
+    @friends[idx]
   end
 end
 
-class Foo::Bar
-  include Foo
+class Friend
+  attr_reader :name
 
-  def value2
-    VAL
+  def initialize(name)
+    @name = name
+  end
+
+  def to_s
+    name
   end
 end
 
-p Foo::Bar.new.value1 # => "Local"
-p Foo::Bar.new.value2 # => Can't find constant?
+tom = Person.new
+john = Friend.new('John')
+amber = Friend.new('Amber')
+
+tom << amber
+tom[1] = john
+puts tom[0]      # => Amber
+puts tom.friends # => Amber
+                 # => John

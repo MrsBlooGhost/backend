@@ -179,3 +179,53 @@ end
 ```
 
 When we use the syntax `class Foo::Bar`, we are defining a new class `Bar` inside the `Foo` module. However, this doesn't automatically give the new `Bar` class access to the constants defined in the `Foo` module. In order to give the new `Bar` class access to the constants defined in the `Foo` module, we would have to `include` the module in the `Bar` class definition.
+
+---
+
+#14
+
+> Write three methods in the `Person` class and one method in the `Friend` class that would return the outputs shown on the last two lines.
+
+```ruby
+class Person
+  attr_reader :friends
+
+  def initialize
+    @friends = []
+  end
+
+  def <<(friend)
+    @friends << friend
+  end
+
+  def []=(idx, friend)
+    @friends[idx] = friend
+  end
+
+  def [](idx)
+    @friends[idx]
+  end
+end
+
+class Friend
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
+  end
+
+  def to_s
+    name
+  end
+end
+
+tom = Person.new
+john = Friend.new('John')
+amber = Friend.new('Amber')
+
+tom << amber
+tom[1] = john
+puts tom[0]      # => Amber
+puts tom.friends # => Amber
+                 # => John
+```
