@@ -119,3 +119,63 @@ cat.name
 `[Bugs, Bunny, Run, Walk, Jump, Object, Kernel, BasicObject]` - Calling the `Module#ancestors` method on a class returns an array of classes and modules in the lookup path.
 
 `"Running"` - When Ruby resolves a constant, it first searches in the constant's lexical scope, then in the inheritance hierarchy, and lastly, in the main scope. Once Ruby finds the constant definition, it stops searching. In this case, Ruby doesn't find `STR` defined in the lexical scope, class `Bugs`. Ruby then looks up the inheritance hierarchy (`Bunny, Run, Walk, Jump, Object, Kernel, BasicObject`) and finds the constant `STR` initialized in module `Run`.
+
+---
+
+#13
+
+> What is returned on the last two lines of code?
+
+`"Local"`
+`"Global"`
+
+This demonstrates how Ruby resolves a constant, first searching lexically for it.
+
+> If we omit the first line (`VAL = ‘Global’`), what would the return values be?
+
+`"Local"`
+`uninitialized constant Foo::Bar::VAL (NameError)`
+
+> Without defining `VAL` again, show the two places you can add a line of code to the `Bar` class inside the `Foo` module to allow `value2` access to the same `VAL` as `value1`.
+
+```ruby
+module Foo
+  VAL = 'Local'
+
+  class Bar
+    include Foo
+
+    def value1
+      VAL
+    end
+  end
+end
+
+class Foo::Bar
+  def value2
+    VAL
+  end
+end
+```
+
+```ruby
+module Foo
+  VAL = 'Local'
+
+  class Bar
+    def value1
+      VAL
+    end
+  end
+end
+
+class Foo::Bar
+  include Foo
+
+  def value2
+    VAL
+  end
+end
+```
+
+When we use the syntax `class Foo::Bar`, we are defining a new class `Bar` inside the `Foo` module. However, this doesn't automatically give the new `Bar` class access to the constants defined in the `Foo` module. In order to give the new `Bar` class acess to the constants defined in the `Foo` module, we would have to `include` the module in the `Bar` class definition.

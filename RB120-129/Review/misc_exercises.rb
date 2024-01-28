@@ -68,27 +68,27 @@ Interface inheritance is demonstrated here. Ruby does not support multiple inher
 # On line _, `self` refers to an instance of the class `MeMyselfAndI`, which is the receiver of the method `myself`.
 
 
-# 12 - What do the last two lines of code output?
+# VAL = 'Global'
 
-module Walk
-  STR = "Walking"
+module Foo
+  VAL = 'Local'
+
+  class Bar
+  # include Foo
+
+    def value1
+      VAL
+    end
+  end
 end
 
-module Run
-  STR = "Running"
+class Foo::Bar
+  include Foo
+
+  def value2
+    VAL
+  end
 end
 
-module Jump
-  STR = "Jumping"
-end
-
-class Bunny
-  include Jump
-  include Walk
-  include Run
-end
-
-class Bugs < Bunny; end
-
-p Bugs.ancestors # [Bugs, Bunny, Run, Walk, Jump, Object, Kernel, BasicObject]
-p Bugs::STR # "Running"
+p Foo::Bar.new.value1 # => "Local"
+p Foo::Bar.new.value2 # => Can't find constant?
