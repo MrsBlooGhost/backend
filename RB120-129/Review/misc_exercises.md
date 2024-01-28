@@ -61,7 +61,7 @@ Line 18: `"STEVIE WONDER"` - Getter method `artist` returns the value of `@artis
 
 > What do the last two lines of code output?
 
-`"STEVIE WONDER"`
+`"STEVIE WONDER"`\
 `"STEVIE WONDER"`
 
 Although setter methods return the argument/s passed upon invocation, the destructive method call `name.upcase!` affects the value of `@artist` because local variable `name` and instance variable `@name` both point to the same string object.
@@ -133,7 +133,7 @@ This demonstrates how Ruby resolves a constant, first searching lexically for it
 
 > If we omit the first line (`VAL = ‘Global’`), what would the return values be?
 
-`"Local"`
+`"Local"`\
 `uninitialized constant Foo::Bar::VAL (NameError)`
 
 > Without defining `VAL` again, show the two places you can add a line of code to the `Bar` class inside the `Foo` module to allow `value2` access to the same `VAL` as `value1`.
