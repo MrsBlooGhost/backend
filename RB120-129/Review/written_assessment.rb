@@ -43,6 +43,7 @@ Code Spikes
 
 # + Children, teachers, class assistants, principles, janitors and cafeteria workers all have the ability to eat lunch.
 
+=begin
 module Watchable
   def watch_students
     "I watch students on the playground."
@@ -106,6 +107,7 @@ class Students < Preschool
   def learn; end
   def play; end
 end
+=end
 
 
 ### Dental Office Alumni (by Rona Hsu)
