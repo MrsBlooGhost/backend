@@ -1,12 +1,12 @@
-# RB129 Prep: Marwan's Exercises
+# RB129 Prep
 
-Source: <https://medium.com/@marwan.zaarab/rb129-interview-assessment-prep-e2f120330240>
+Marwan's Exercises: <https://medium.com/@marwan.zaarab/rb129-interview-assessment-prep-e2f120330240>
 
-Examples located in my Gist: <https://gist.github.com/MrsBlooGhost/b6173754c093823d1d7f1cca04a01e90#file-rb120-129_-1-rb>
+Examples in my Gist: <https://gist.github.com/MrsBlooGhost/b6173754c093823d1d7f1cca04a01e90#file-rb120-129_-1-rb>
 
 ## My Solutions
 
-#1
+1 -
 
 The code raises a SystemStackError indicating that a recursive error has occurred because on line 12, we are calling the setter method `id=()` within the setter method `id=()`.
 
@@ -41,10 +41,21 @@ tom.id # => 45
 
 ---
 
-#9
+9 -
+
+**What will the last three lines of code print to the console?**
 
 Line 16: `inspect` is called on an instance of the `Song` class, which outputs the class `Song`, an encoding of the object ID, and the initialized instance variable `@title` along with its value `Superstitition`.
 
 Line 17: Setter methods return the argument passed in, so `"Stevie Wonder"` is output.
 
 Line 18: Getter method `artist` returns the value of `@artist`, which references `"STEVIE WONDER"`.
+
+**After `song.artist` is called, what would be returned if we inspect the `song` object?**
+
+The `Song` class, an encoding of the object ID, and initialized instance variables with their values: `<Song:(encoding of obj ID) @title="Superstition" @name="STEVIE WONDER">`
+
+---
+
+10 -
+

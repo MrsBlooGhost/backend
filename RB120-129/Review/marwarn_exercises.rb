@@ -86,9 +86,4 @@ end
 p song = Song.new("Superstition")
 p song.artist = "Stevie Wonder"
 p song.artist
-
-# Line 16: `inspect` is called on an instance of the `Song` class, which outputs the class `Song`, an encoding of the object ID, and the initialized instance variable `@title` along with its value `Superstitition`.
-
-# Line 17: Setter methods return the argument passed in, so `"Stevie Wonder"` is output.
-
-# Line 18: Getter method `artist` returns the value of `@artist`, which references `"STEVIE WONDER"`.
+p song
