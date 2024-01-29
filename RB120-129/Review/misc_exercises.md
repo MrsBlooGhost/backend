@@ -33,11 +33,12 @@ tom.id # => 45
 
 ---
 
-2 -
+#2
 
 ---
 
-3 -
+#3
+
 
 ---
 
@@ -283,3 +284,13 @@ puts Human.hair_color("")
 On line 4, 6 and 7, `self` refers to the class `MeMyselfAndI`.
 
 On line 11, `self` refers to the instance of the class `MeMyselfAndI` on which the method `myself` is being called on.
+
+---
+
+#18
+
+> What are some characteristics of instance variables?
+
+Instance variables store the values of the attributes of an individual object, enabling each object to have a unique state.
+
+Instance variables are scoped at the object level. This means they are accessible by any instance method defined in that class and they don't need to be passed in as arguments prior to being referenced to in the method.
