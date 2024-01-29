@@ -282,4 +282,4 @@ puts Human.hair_color("")
 
 On line 4, 6 and 7, `self` refers to the class `MeMyselfAndI`.
 
-# On line 11, `self` refers to an instance of the class `MeMyselfAndI`.
+On line 11, `self` refers to an instance of the class `MeMyselfAndI`.
