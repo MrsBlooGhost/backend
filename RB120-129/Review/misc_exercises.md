@@ -280,7 +280,6 @@ puts Human.hair_color("")
 
 `self` refers to different things depending on the context in which it is used. Within a class definition and outside an instance method, `self` refers to the class. Within a class definition and inside an instance method, `self` refers to the instance of the class.
 
-
 On line 4, 6 and 7, `self` refers to the class `MeMyselfAndI`.
 
 # On line 11, `self` refers to an instance of the class `MeMyselfAndI`.
