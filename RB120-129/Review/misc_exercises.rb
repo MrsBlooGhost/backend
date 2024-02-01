@@ -23,74 +23,28 @@ Interface inheritance is demonstrated here. Ruby does not support multiple inher
 =end
 
 
-# 17Q — What does each self refer to in the code snippet below?
-
-# class MeMyselfAndI
-#   self
-
-#   def self.me
-#     self
-#   end
-
-#   def myself
-#     self
-#   end
-# end
-
-# i = MeMyselfAndI.new
-
-# # -------------------------
-
-# #17A
-
-# class MeMyselfAndI
-#   self # MeMyselfAndI
-
-#   def self.me
-#     self #MeMyselfAndI
-#   end
-
-#   def myself
-#     self # instance of class MeMyselfAndI
-#   end
-# end
-
-# i = MeMyselfAndI.new
-
-# Depending on the context in which `self` is used, it refers to different things. If used within a class definition and outside of an instance method, `self` refers to the class. If used within a class definition and inside of an instance method, `self` refers to the instance of the class.
-
-# On line _, `self` refers to class `MeMyselfAndI`.
-
-# On line _, `self` refers to class `MeMyselfAndI`.
-
-# On line _, `self` refers to class `MeMyselfAndI`.
-
-# On line _, `self` refers to an instance of the class `MeMyselfAndI`, which is the receiver of the method `myself`.
-
-
-# 16 — Update the `Human` class so that lines 13 and 16 return the desired output.
-
-# Problem taken from tinyurl.com/mr42tf4t, creator: Raul Romero
-
-class Human
+class Demographics
   attr_reader :name
 
-  def initialize(name="Dylan")
+  def initialize(name, weight)
     @name = name
+    @weight = weight
+    @hi = 'a'
   end
 
-  def hair_color(color)
-    "Hi, my name is #{name} and I have #{color} hair."
+  def info
+    puts "#{name} weighs at least 150 lb." if weight >= 150
+    puts "#{name} weighs less than 150 lb." unless weight >= 150
   end
 
-  def self.hair_color(color)
-    color = "blonde" if color.empty?
-    "Hi, my name is #{self.new.name} and I have #{color} hair."
-  end
+  private
+
+  attr_reader :weight
 end
 
-puts Human.new("Jo").hair_color("blonde")
-# Should output "Hi, my name is Jo and I have blonde hair."
+molly = Demographics.new("Molly", 200)
 
-puts Human.hair_color("")
-# Should "Hi, my name is Dylan and I have blonde hair."
+molly.weight # => in `<main>': private method `weight' called for #<Demographics:0x00007f160de48818 @name="Molly", @height=60, @weight=200> (NoMethodError)
+
+molly.info
+# => "Molly is 60 inches inches tall and weighs at least 150 lb."
