@@ -1,48 +1,53 @@
-# Problem received from from Joseph Ochoa
+# From Joseph Ochoa
 
-# Describe what the code below outputs and why 
+# Give class `Barbarian` the functionality of the instance method `attack` in `Monster` in three ways:
+
+# By using class inheritance
+
+class Monster
+  def attack
+    "attacks from superclass!"
+  end
+end
+
+class Barbarian < Monster
+end
+
+Barbarian.new.attack # => "attacks from superclass!"
+
+# By using modules
 
 module Attackable
   def attack
-    "attacks!"
+    "attacks from module!"
   end
 end
 
-class Characters
-  attr_accessor :name, :characters 
-  
-  def initialize(name) 
-    #
-    self.name 
-    @characters = [] 
-  end
-  
-  def display
-    name
-  end
-  
-  protected 
-  attr_reader :name
-  attr_writer :name
-end
-
-class Monster < Characters
+class Monster
   include Attackable
-  
-  def initialize(name)
-    super
+end
+
+class Barbarian
+  include Attackable
+end
+
+Barbarian.new.attack # => "attacks from module!"
+
+# By using duck typing
+
+class Monster
+  def attack
+    "attacks from Monster!"
   end
 end
 
-class Barbarian < Characters
-  def ==(other)
-    if(super.self == super.self) # 
-      super.self == super.self
-    end
+class Barbarian
+  def attack
+    "attacks from Barbarian!"
   end
 end
 
-conan = Barbarian.new('barb') 
-rob = Monster.new('monst')
-conan.characters << rob
-p conan.display
+[Monster.new, Barbarian.new].each { |inst| puts inst.attack }
+# Output:
+# attacks from Monster!
+# attacks from Barbarian!

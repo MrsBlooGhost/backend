@@ -355,3 +355,70 @@ I don't like this problem because it's not recommended to override `BasicObject#
 ---
 
 #21
+
+> What does the code below output? Why?
+
+`nil` is output because on line 48, `display` is called on `conan`, invoking the method on line, which invokes the getter method `name`, which returns the value of `@name`. `@name` was never initialized and therefore references `nil`.
+
+---
+
+#22
+
+# From Joseph Ochoa
+
+> Give class `Barbarian` the functionality of the instance method `attack` in `Monster` in three ways:
+
+> By using class inheritance
+
+```ruby
+class Monster
+  def attack
+    "attacks from superclass!"
+  end
+end
+
+class Barbarian < Monster
+end
+
+Barbarian.new.attack # => "attacks from superclass!"
+```
+> By using modules
+
+```ruby
+module Attackable
+  def attack
+    "attacks from module!"
+  end
+end
+
+class Monster
+  include Attackable
+end
+
+class Barbarian
+  include Attackable
+end
+
+Barbarian.new.attack # => "attacks from module!"
+```
+
+> By using duck typing
+
+```ruby
+class Monster
+  def attack
+    "attacks from Monster!"
+  end
+end
+
+class Barbarian
+  def attack
+    "attacks from Barbarian!"
+  end
+end
+
+[Monster.new, Barbarian.new].each { |inst| puts inst.attack }
+# Output:
+# attacks from Monster!
+# attacks from Barbarian!
+```
