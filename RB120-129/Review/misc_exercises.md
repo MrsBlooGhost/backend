@@ -294,3 +294,64 @@ On line 11, `self` refers to the instance of the class `MeMyselfAndI` on which t
 Instance variables store the values of the attributes of an individual object, enabling each object to have a unique state.
 
 Instance variables are scoped at the object level. This means they are accessible by any instance method defined in that class and they don't need to be passed in as arguments prior to being referenced to in the method.
+
+---
+
+#19
+
+> Add 1 line of code in the `Person` class and 1 line of code in the `initalize` method to get the following output: `"My name is Roger and I am a Carpenter"`.
+
+```ruby
+# Problem by Natalie Thompson
+
+class Person
+  def initialize(name, job)
+    @name = name
+    @job = job
+  end 
+
+  def to_s
+    "My name is #{@name} and I am a #{@job}."
+  end
+end
+
+roger = Person.new("Roger", "Carpenter")
+puts roger
+```
+I'm not sure how to add only ONE line in the `Person` class to get the output, so I just custom defined my own `to_s` method.
+
+---
+
+#20
+
+> Modify the code below so that we get the expected outputs. 
+
+```ruby
+class Human  
+  attr_reader :name 
+  
+  def initialize(name)
+    @name = name
+  end
+
+  def equal?(other)
+    name == other.name
+  end
+
+  def +(other)
+    "anna" + other.name
+  end
+end
+
+gilles = Human.new("gilles") 
+anna = Human.new("gilles")
+
+puts anna.equal?(gilles) # expected output: true
+puts anna + gilles # expected output: annagilles 
+```
+
+I don't like this problem because it's not recommended to override `BasicObject#equal?`, but we have to do so in our solution. Therefore, I don't think this is a realistic problem. 
+
+---
+
+#21
