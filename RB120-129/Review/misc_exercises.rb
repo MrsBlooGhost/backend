@@ -1,53 +1,47 @@
-# From Joseph Ochoa
+# LS Man... Legend says LS Man first appeared in SPOT.
+# Modify the code below so that we get the expected return values listed. You can only add code to the `Flightable` module and the `Superhero` class in order to get the expected outputs.
 
-# Give class `Barbarian` the functionality of the instance method `attack` in `Monster` in three ways:
-
-# By using class inheritance
-
-class Monster
-  def attack
-    "attacks from superclass!"
+module Flightable
+  def fly
+    "I am a #{name}, I am a #{self.class.to_s.downcase}, and I can fly!"
   end
 end
 
-class Barbarian < Monster
-end
+class Superhero
+  include Flightable  
+  
+  attr_accessor :ability
+  attr_reader :name
+  
+  def self.fight_crime
+    hero = self.new
+    hero.ability = Ability.new("coding skills").description
 
-Barbarian.new.attack # => "attacks from superclass!"
-
-# By using modules
-
-module Attackable
-  def attack
-    "attacks from module!"
+    puts "I am #{self}!"
+    hero.announce_ability
+  end
+  
+  def initialize(name=nil)
+    @name = name
+  end
+  
+  def announce_ability
+    puts "I fight crime with my #{ability} ability!"
   end
 end
 
-class Monster
-  include Attackable
-end
+class LSMan < Superhero; end
 
-class Barbarian
-  include Attackable
-end
+class Ability
+  attr_reader :description
 
-Barbarian.new.attack # => "attacks from module!"
-
-# By using duck typing
-
-class Monster
-  def attack
-    "attacks from Monster!"
+  def initialize(description)
+    @description = description
   end
 end
 
-class Barbarian
-  def attack
-    "attacks from Barbarian!"
-  end
-end
+superman = Superhero.new('Superman')
 
-[Monster.new, Barbarian.new].each { |inst| puts inst.attack }
-# Output:
-# attacks from Monster!
-# attacks from Barbarian!
+puts superman.fly # => I am Superman, I am a superhero, and I can fly!
+LSMan.fight_crime # => I am LSMan!
+                  # => I fight crime with my coding skills ability!

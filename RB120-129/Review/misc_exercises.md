@@ -364,8 +364,6 @@ I don't like this problem because it's not recommended to override `BasicObject#
 
 #22
 
-# From Joseph Ochoa
-
 > Give class `Barbarian` the functionality of the instance method `attack` in `Monster` in three ways:
 
 > By using class inheritance
@@ -421,4 +419,175 @@ end
 # Output:
 # attacks from Monster!
 # attacks from Barbarian!
+```
+
+---
+
+#23
+
+> Without adding any methods below, implement a solution so that the last two lines output `true`.
+
+```ruby
+class ClassA 
+  attr_reader :field1, :field2
+  
+  def initialize(num)
+    @field1 = "xyz"
+    @field2 = num
+  end
+end
+
+class ClassB 
+  attr_reader :field1
+
+  def initialize
+    @field1 = "abc"
+  end
+end
+
+obj1 = ClassA.new(50)
+obj2 = ClassA.new(25)
+obj3 = ClassB.new
+
+p obj1.field2 > obj2.field2
+p obj2.field1 > obj3.field1
+```
+
+---
+
+#24
+
+> Modify the code below so that we get the expected return values listed.
+
+```ruby
+class BenjaminButton 
+  attr_accessor :actual_age, :appearance_age
+
+  def initialize
+    @actual_age = 0
+    @appearance_age = 100
+  end
+  
+  def get_older
+    self.actual_age += 1
+    self.appearance_age -= 1
+  end
+  
+  def die
+    self.actual_age = 100
+    self.appearance_age = 0
+  end
+end
+
+benjamin = BenjaminButton.new
+p benjamin.actual_age # => 0
+p benjamin.appearance_age # => 100
+
+benjamin.get_older
+p benjamin.actual_age # => 1
+p benjamin.appearance_age # => 99
+
+benjamin.die
+p benjamin.actual_age # => 100
+p benjamin.appearance_age # => 0
+```
+
+---
+
+#25
+
+> Add one line of code where indicated below so that we get the expected return values.
+
+```ruby
+class Wizard
+  attr_reader :name, :hitpoints
+  
+  def initialize(name, hitpoints)
+    @name = name
+    @hitpoints = hitpoints
+  end  
+  
+  def fireball
+    "casts Fireball for 500 damage!"
+  end
+  
+end
+
+class Summoner < Wizard
+  attr_reader :souls
+  
+  def initialize(name, hitpoints)
+    super(name, hitpoints)
+    @souls = []
+  end
+  
+  def soul_steal(character)
+    @souls << character
+  end
+end
+
+gandolf = Summoner.new("Gandolf", 100)
+p gandolf.name # => "Gandolf"
+
+valdimar = Wizard.new("Valdimar", 200)
+p valdimar.fireball #=> "casts fireball for 500 damage!"
+
+p gandolf.hitpoints #=> 100
+
+p gandolf.soul_steal(valdimar) #=> [#<Wizard:0x000055d782470810 @name="Valdimar", @hitpoints=200>]
+
+p gandolf.souls[0].fireball #=> "casts fireball for 500 damage!"
+```
+
+---
+
+#26
+
+> Modify the code below so that we get the expected return values listed. You can only add code to the `Flightable` module and the `Superhero` class in order to get the expected outputs.
+
+```ruby
+module Flightable
+  def fly
+    "I am a #{name}, I am a #{self.class.to_s.downcase}, and I can fly!"
+  end
+end
+
+class Superhero
+  include Flightable  
+  
+  attr_accessor :ability
+  attr_reader :name
+  
+  def self.fight_crime
+    hero = self.new
+    hero.ability = Ability.new("coding skills").description
+
+    puts "I am #{self}!"
+    hero.announce_ability
+  end
+  
+  def initialize(name=nil)
+    @name = name
+  end
+  
+  def announce_ability
+    puts "I fight crime with my #{ability} ability!"
+  end
+end
+
+class LSMan < Superhero; end
+
+class Ability
+  attr_reader :description
+
+  def initialize(description)
+    @description = description
+  end
+end
+
+superman = Superhero.new('Superman')
+
+puts superman.fly # => I am Superman, I am a superhero, and I can fly!
+LSMan.fight_crime # => I am LSMan!
+                  # => I fight crime with my coding skills ability!
 ```
