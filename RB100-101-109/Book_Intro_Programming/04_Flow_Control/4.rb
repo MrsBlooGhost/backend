@@ -1,19 +1,21 @@
-# Snippet 1
-'4' == 4 ? puts("TRUE") : puts("FALSE")
-# output:
-# FALSE
+# -------------- Solution by Diana
 
-# Snippet 2
+# -- Snippet 1
+'4' == 4 ? puts("TRUE") : puts("FALSE")
+
+# Output: FALSE
+
+# -- Snippet 2
 x = 2
 if ((x * 3) / 2) == (4 + 4 - x - 3)
   puts "Did you get it right?"
 else
   puts "Did you?"
 end
-# output:
-# Did you get it right?
 
-# Snippet 3
+# Output: Did you get it right?
+
+# -- Snippet 3
 y = 9
 x = 10
 if (x + 1) <= (y)
@@ -25,5 +27,11 @@ elsif (y + 1) == x
 else
   puts "Alrighty!"
 end
-# output:
-# Alright now!
+
+# Output: Alright now!
+
+# ---------- Solution by Launch School
+
+1. `"FALSE"`
+2. `"Did you get it right?"`
+3. `"Alright now!"`
