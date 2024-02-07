@@ -1,3 +1,5 @@
+# -------------- Solution by Diana
+
 hash1 = {shoes: "nike", "hat" => "adidas", :hoodie => true}
 hash2 = {"hat" => "adidas", :shoes => "nike", hoodie: true}
 
@@ -6,3 +8,10 @@ if hash1 == hash2
 else
   puts "These hashes are not the same!"
 end
+
+# Output: These hashes are the same!
+# Order does not matter in hashes.
+
+# ---------- Solution by Launch School
+
+# "These hashes are the same!"
