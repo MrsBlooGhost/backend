@@ -8,6 +8,8 @@ Examples in my Gist: <https://gist.github.com/MrsBlooGhost/b6173754c093823d1d7f1
 
 #1
 
+> What will the following code output? Why?
+
 The code raises a SystemStackError indicating that a recursive error has occurred because on line 12, we are calling the setter method `id=()` within the setter method `id=()`.
 
 We can fix this error by referencing the `@id` instance variable instead and initializing it to the `value` passed in. This way, the code outputs `45`.
@@ -35,6 +37,13 @@ tom.id # => 45
 
 #2
 
+> Define a class of your choice with the following:
+> - Constructor method that initializes 2 instance variables.
+> - Instance method that outputs an interpolated string of those > variables.
+> - Getter methods for both (you can use the shorthand notation if you want).
+> - Prevent instances from accessing these methods outside of the class.
+> - Finally, explain what concept(s) you’ve just demonstrated with your code.
+
 This code demonstrates encapsulation, which is the grouping of data into objects while making that data unavailable to the rest of the codebase. It is made unavailable via encapsulation of the state of each instance in instance variables. The state of the object can be retrieved by the instance method we have created. The behavior of each instance is further encapsulated through method access control. The getter methods are set as private, which prevents this data from being accessed in unwanted ways. 
 
 ```ruby
@@ -57,6 +66,8 @@ end
 
 #3
 
+> What concept does the following code aim to demonstrate?
+
 Polymorphism via interface inheritance is demonstrated in this code. 
 
 Polymorphism is the ability of objects of different classes to respond to the same method invocation. This allows us to achieve a higher level of abstraction, while maintaining code that adheres to the DRY principle. 
@@ -67,11 +78,15 @@ Polymorphism can be achieve through interface inheritance, in which common behav
 
 #4
 
+> What will the last line of code return?
+
 A `NoMethodError` is raised, specifying that a private method `id` is called on `other`. This error is raised because private methods can only be called explicitly on `self`.
 
 ---
 
 #5
+
+> What will the last 2 lines of code output?
 
 `Justice for all`\
 `Justice for all!!!`
@@ -80,9 +95,35 @@ A `NoMethodError` is raised, specifying that a private method `id` is called on 
 
 #6
 
+> Will the following code execute? If so, what will be output? If not, can you fix it so it executes?
+
 An `ArgumentError` is raised, specifying that on line 8, the `greet` method is given 1 argument and expects 0. This is due to the `super` method call on line 19, which passes all arguments along to the superclass's `greet` method. 
 
 In order for the code to execute, we must call `super()` so that no arguments are passed along to the superclass's `greet` method. 
+
+---
+
+#7
+
+> What concept does this code demonstrate? What will be the output?
+
+`"Bird is flying!"`\
+`"Pigeon is flying!"`\
+`"Duck is flying!"`
+
+This code demonstrates polymorphism through class inheritance.
+
+Polymorphism is the ability of objects of different classes to respond to the same method invocation. All instances respond to the `fly` instance method.
+
+Class inheritance is when a subclass inherits behaviors of a superclass. Both `Pigeon` and `Duck` inherit the `fly` method from the superclass `Bird`. 
+
+---
+
+#8
+
+> What does the `self` keyword refer to in the `good` method?
+
+`self` in the `good` method refers to the calling object.
 
 ---
 
