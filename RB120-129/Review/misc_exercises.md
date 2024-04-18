@@ -33,7 +33,25 @@ tom.id # => 45
 
 ---
 
-#2
+#2 -
+
+This code demonstrates encapsulation, which is the grouping of data into objects while making that data unavailable to the rest of the codebase. It is made unavailable via encapsulation of the state of each instance in instance variables. The state of the object can be retrieved by the instance method we have created. The behavior of each instance is further encapsulated through method access control. The getter methods are set as private, which prevents this data from being accessed in unwanted ways. 
+
+```ruby
+class School
+  def initialize(name, location)
+    @name = name
+    @location = location
+  end
+
+  def give_info
+    puts "This school is named #{@name} and is located in #{@location}."
+  end
+
+  private
+  attr_reader :name, :location
+end
+```
 
 ---
 
