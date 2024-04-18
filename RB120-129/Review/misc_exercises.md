@@ -78,6 +78,14 @@ A `NoMethodError` is raised, specifying that a private method `id` is called on 
 
 ---
 
+#6
+
+An `ArgumentError` is raised, specifying that on line 8, the `greet` method is given 1 argument and expects 0. This is due to the `super` method call on line 19, which passes all arguments along to the superclass's `greet` method. 
+
+In order for the code to execute, we must call `super()` so that no arguments are passed along to the superclass's `greet` method. 
+
+---
+
 #9
 
 > What will the last three lines of code print to the console?

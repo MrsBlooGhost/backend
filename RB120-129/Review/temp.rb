@@ -1,23 +1,24 @@
-class Foo
-  def self.method_a
-    "Justice" + all
+class Person
+  attr_reader :name
+
+  def initialize(name)
+    @name = name
   end
 
-  def self.method_b(other)
-    "Justice" + other.exclamate
-  end
-
-  private
-
-  def self.all
-    " for all"
-  end
-
-  def self.exclamate
-    all + "!!!"
+  def greet
+     "Hello! they call me #{name}"
   end
 end
 
-foo = Foo.new
-puts Foo.method_a # Justice for all
-puts Foo.method_b(Foo) # Justice for all!!!
+class Puppet < Person
+  def initialize(name)
+    super
+  end
+
+  def greet(message)
+    puts super + message
+  end
+end
+
+puppet = Puppet.new("Cookie Monster")
+puppet.greet(" and I love cookies!") # Hello! they call me Cookie Monster and I love cookies!
