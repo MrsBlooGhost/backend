@@ -6,7 +6,7 @@ Examples in my Gist: <https://gist.github.com/MrsBlooGhost/b6173754c093823d1d7f1
 
 ## My Solutions
 
-1 -
+#1
 
 The code raises a SystemStackError indicating that a recursive error has occurred because on line 12, we are calling the setter method `id=()` within the setter method `id=()`.
 
@@ -33,7 +33,7 @@ tom.id # => 45
 
 ---
 
-#2 -
+#2
 
 This code demonstrates encapsulation, which is the grouping of data into objects while making that data unavailable to the rest of the codebase. It is made unavailable via encapsulation of the state of each instance in instance variables. The state of the object can be retrieved by the instance method we have created. The behavior of each instance is further encapsulated through method access control. The getter methods are set as private, which prevents this data from being accessed in unwanted ways. 
 
@@ -55,13 +55,26 @@ end
 
 ---
 
-#3 -
+#3
 
 Polymorphism via interface inheritance is demonstrated in this code. 
 
 Polymorphism is the ability of objects of different classes to respond to the same method invocation. This allows us to achieve a higher level of abstraction, while maintaining code that adheres to the DRY principle. 
 
 Polymorphism can be achieve through interface inheritance, in which common behavior is extracted to a module, which is then mixed in to specific classes. As a result, the behavior defined in the module is made available to objects of those classes. 
+
+---
+
+#4
+
+A `NoMethodError` is raised, specifying that a private method `id` is called on `other`. This error is raised because private methods can only be called explicitly on `self`.
+
+---
+
+#5
+
+`Justice for all`\
+`Justice for all!!!`
 
 ---
 
