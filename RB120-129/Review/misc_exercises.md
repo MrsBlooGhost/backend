@@ -55,8 +55,13 @@ end
 
 ---
 
-#3
+#3 -
 
+Polymorphism via interface inheritance is demonstrated in this code. 
+
+Polymorphism is the ability of objects of different classes to respond to the same method invocation. This allows us to achieve a higher level of abstraction, while maintaining code that adheres to the DRY principle. 
+
+Polymorphism can be achieve through interface inheritance, in which common behavior is extracted to a module, which is then mixed in to specific classes. As a result, the behavior defined in the module is made available to objects of those classes. 
 
 ---
 
