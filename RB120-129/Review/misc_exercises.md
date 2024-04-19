@@ -380,15 +380,7 @@ Instance variables and their values make up the attributes of an object.
 
 Uninitialized instance variables reference `nil`.
 
-Instance variables belong to the object. Each object has its own copy of every instance variable defined in the class. 
-
-Instance variables are scoped at the object level and thus are accessible in all instance methods. They don't need to be passed in as arguments. 
-
-Instance variables store the values of the attributes of an individual object, enabling each object to have a unique state.
-
-Instance variables are scoped at the object level. This means they are accessible by any instance method defined in that class and they don't need to be passed in as arguments prior to being referenced to in the method.
-
-They cannot be accessed outside of the class without defining methods to interact with them.
+Instance variables are scoped at the object level. Each object has its own copy of every instance variable defined in the class. They are accessible by instance methods defined in the class, and don't need to be passed as arguments prior to being referenced in the method. They can't be accessed outside of the class unless we have defined instance methods to interact with them.
 
 ---
 
