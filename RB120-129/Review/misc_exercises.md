@@ -376,9 +376,19 @@ On line 11, `self` refers to the instance of the class `MeMyselfAndI` on which t
 
 > What are some characteristics of instance variables?
 
+Instance variables and their values make up the attributes of an object.
+
+Uninitialized instance variables reference `nil`.
+
+Instance variables belong to the object. Each object has its own copy of every instance variable defined in the class. 
+
+Instance variables are scoped at the object level and thus are accessible in all instance methods. They don't need to be passed in as arguments. 
+
 Instance variables store the values of the attributes of an individual object, enabling each object to have a unique state.
 
 Instance variables are scoped at the object level. This means they are accessible by any instance method defined in that class and they don't need to be passed in as arguments prior to being referenced to in the method.
+
+They cannot be accessed outside of the class without defining methods to interact with them.
 
 ---
 
