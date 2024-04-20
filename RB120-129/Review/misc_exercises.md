@@ -677,5 +677,5 @@ superman = Superhero.new('Superman')
 
 puts superman.fly # => I am Superman, I am a superhero, and I can fly!
 LSMan.fight_crime # => I am LSMan!
-                # => I fight crime with my coding skills ability!
+                  # => I fight crime with my coding skills ability!
 ```
