@@ -445,7 +445,7 @@ I don't like this problem because it's not recommended to override `BasicObject#
 
 > What does the code below output? Why?
 
-`nil` is output because on line 48, `display` is called on `conan`, invoking the method on line, which invokes the getter method `name`, which returns the value of `@name`. `@name` was never initialized and therefore references `nil`.
+`nil` is output because on line 48, `display` is called on `conan`, invoking the method on line 19, which invokes the getter method `name`, which returns the value of `@name`. `@name` was never initialized and therefore references `nil`.
 
 ---
 
@@ -604,7 +604,7 @@ class Summoner < Wizard
   attr_reader :souls
   
   def initialize(name, hitpoints)
-    super(name, hitpoints)
+    super
     @souls = []
   end
   
@@ -635,34 +635,35 @@ p gandolf.souls[0].fireball #=> "casts fireball for 500 damage!"
 ```ruby
 module Flightable
   def fly
-    "I am a #{name}, I am a #{self.class.to_s.downcase}, and I can fly!"
+    "I am #{name}, I am a #{self.class.to_s.downcase}, and I can fly!"
   end
 end
 
 class Superhero
-  include Flightable  
-  
+  include Flightable
+
   attr_accessor :ability
   attr_reader :name
   
   def self.fight_crime
-    hero = self.new
-    hero.ability = Ability.new("coding skills").description
-
     puts "I am #{self}!"
-    hero.announce_ability
+    self.new.announce_ability
   end
   
-  def initialize(name=nil)
+  def initialize(name)
     @name = name
   end
   
   def announce_ability
-    puts "I fight crime with my #{ability} ability!"
+    puts "I fight crime with my #{ability.description} ability!"
   end
 end
 
-class LSMan < Superhero; end
+class LSMan < Superhero
+  def initialize
+    @ability = Ability.new("coding skills")
+  end
+end
 
 class Ability
   attr_reader :description
@@ -676,5 +677,5 @@ superman = Superhero.new('Superman')
 
 puts superman.fly # => I am Superman, I am a superhero, and I can fly!
 LSMan.fight_crime # => I am LSMan!
-                  # => I fight crime with my coding skills ability!
+                # => I fight crime with my coding skills ability!
 ```

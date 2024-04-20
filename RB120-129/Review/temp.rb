@@ -1,26 +1,48 @@
-# 16 — Update the `Human` class so that lines 13 and 16 return the desired output.
+# LS Man... Legend says LS Man first appeared in SPOT.
+# Modify the code below, using the below criteria, so that we get the expected return values. 
 
-# Problem taken from tinyurl.com/mr42tf4t, creator: Raul Romero
-
-class Human 
-  attr_reader :name
-
-  def initialize(name="Dylan")
-    @name = name
+  module Flightable
+    def fly
+      "I am #{name}, I am a #{self.class.to_s.downcase}, and I can fly!"
+    end
   end
+  
+  class Superhero
+    include Flightable
 
-  def hair_color(color)
-    "Hi, my name is #{name} and I have #{color} hair."
+    attr_accessor :ability
+    attr_reader :name
+    
+    def self.fight_crime
+      puts "I am #{self}!"
+      self.new.announce_ability
+    end
+    
+    def initialize(name)
+      @name = name
+    end
+    
+    def announce_ability
+      puts "I fight crime with my #{ability.description} ability!"
+    end
   end
-
-  def self.hair_color(color)
-    color = "blonde" if color.empty?
-    "Hi, my name is #{self.new.name} and I have #{color} hair."
+  
+  class LSMan < Superhero
+    def initialize
+      @ability = Ability.new("coding skills")
+    end
   end
-end
+  
+  class Ability
+    attr_reader :description
+  
+    def initialize(description)
+      @description = description
+    end
+  end
+  
+superman = Superhero.new('Superman')
 
-puts Human.new("Jo").hair_color("blonde")  
-# Should output "Hi, my name is Jo and I have blonde hair."
-
-puts Human.hair_color("")              
-# Should output "Hi, my name is Dylan and I have blonde hair."
+puts superman.fly # => I am Superman, I am a superhero, and I can fly!
+LSMan.fight_crime # => I am LSMan!
+                  # => I fight crime with my coding skills ability!
