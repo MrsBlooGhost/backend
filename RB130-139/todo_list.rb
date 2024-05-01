@@ -115,51 +115,27 @@ class TodoList
     result
   end
 
-  def find_by_title(name) # takes a string as argument
+  def find_by_title(name)
     select { |task| task.title == name }.first
-    # returns the first Todo object that matches the argument
-    # Return nil if no todo is found
   end
 
   def all_done
-    # returns new TodoList object containing only the done items
     select { |task| task.done? }
   end
 
   def all_not_done
-    # returns new TodoList object containing only the not done items
     select { |task| !task.done? }
   end
 
-  def mark_done(name) # takes a string as argument
-    # marks the first Todo object that matches the argument as done
+  def mark_done(name)
     each { |task| find_by_title(name).done! }
   end
 
   def mark_all_done
-    # mark every todo as done
     done!
   end
 
   def mark_all_undone
-    # mark every todo as not done
     each(&:undone!)
   end
 end
-
-todo1 = Todo.new("Buy milk")
-todo2 = Todo.new("Clean room")
-todo3 = Todo.new("Go to gym")
-todo4 = Todo.new("Eat breakfast")
-todo5 = Todo.new("Clean room")
-
-list = TodoList.new("Today's Todos")
-
-list.add(todo1) 
-list.add(todo2)
-list.add(todo3)
-list.add(todo4)
-list.add(todo5)
-
-list.mark_done("Clean room")
-p list
