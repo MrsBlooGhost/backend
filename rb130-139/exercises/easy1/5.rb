@@ -66,7 +66,7 @@ Tregehqr Oynapu
     - Return string.
   
 # ----- C
-
+=end
 # ----- Solution 1
 ALPHABET = ('a'..'z').to_a
 
@@ -107,8 +107,6 @@ p decipher("Zneiva Zvafxl")
 p decipher("Lhxvuveb Zngfhzbgb")
 p decipher("Unllvz Fybavzfxv")
 p decipher("Tregehqr Oynapu")
-
-=end
 
 # ----- Solution 2: Using helper methods
 # We used the description of Rot13 directly ("rotate" each character by 13).
