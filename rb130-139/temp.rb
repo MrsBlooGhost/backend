@@ -1,8 +1,10 @@
-# in temp.rb
-require 'minitest/autorun'
+# def call_me(some_code)
+#   some_code.call
+# end
 
-class MyFirstTest < Minitest::Test
-  def test_first_test
-    assert true
-  end
-end
+# name = "Robert"
+chunk_of_code = Proc.new { puts "hi #{name}" }
+name = "diana"
+chunk_of_code.call(name)
+
+# call_me(chunk_of_code)

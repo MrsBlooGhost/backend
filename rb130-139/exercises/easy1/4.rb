@@ -1,12 +1,9 @@
 =begin
 # ----- P
-Write a method that returns a list of all of the divisors of the positive integer passed in as an argument. The return value can be in any sequence you wish.
-
-Input: a positive integer
-Return: an array of integers representing the divisors of input integer
-
-Rules:
-- Returned array can be in any sequence
+Rules
+- Input: a positive integer
+- Return: an array list of all divisors of the input
+  - Can be in any sequence
 
 # ----- E
 divisors(1) == [1]
@@ -21,9 +18,8 @@ divisors(99400891) == [1, 9967, 9973, 99400891] # may take a minute
   - Append current number to `result` if input integer is evenly divisible by current number.
 - Return `result` array.
 
-# ----- C
 =end
-# ----- Using `Range#each`, `Integer#remainder`
+# ----- C1
 def divisors(num)
   result = []
   (1..num).each do |digit|
@@ -32,19 +28,22 @@ def divisors(num)
   result
 end
 
-# ----- Using `Enumerable#each_with_object`, `Integer#remainder`
+# ----- C2
 def divisors(num)
   (1..num).each_with_object([]) do |digit, result|
     result << digit if num.remainder(digit) == 0
   end
 end
 
-# ----- Using `Integer#upto`, `Enumerable#select`, `Numeric#%`
+# ----- C3
+# We iterate through all the possible divisors, and create a list of the actual divisors. 
+# This is what's called a *brute force algorithm* where we try every possible solution; These are easy to write but don't always produce the fastest results. These aren't necessarily bad solutions, but the speed of brute force algorithms should always be examined. 
+
 def divisors(num)
   1.upto(num).select { |digit| num % digit == 0 }
 end
 
-# ----- Using `Integer#sqrt`, `Array#<<`, `Enumerable#sort`, `Array#uniq`
+# ----- C4
 # By only going up to the integer square root (the square root is the 'midway point' for multiplication, whereas dividing by 2 is the midway point for addition), we get all possible values much faster. As the size of `num` increases, the speed at which we get the factors decreases relative to the size of `num`. This means that while it takes more time to run with bigger numbers, it is more efficient.
 # - The `Array#uniq` method call at the end is for cases where `num` is 1 or a perfect square.
 
