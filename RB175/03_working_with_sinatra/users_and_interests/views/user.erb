@@ -1,0 +1,16 @@
+<h1><%= @title %></h1>
+
+<h3>Email:</h3>
+<p><%= @email %></p>
+
+<h3>Interests:</h3>
+<p><%= @interests.join(", ") %></p>
+
+<h5>Other Users:</h5>
+<ul>
+  <% @content.each_key do |name| %>
+    <% unless name.to_s == @user %>
+      <a href ="/users/<%= name %>"><li><%= name %></li></a>
+    <% end %>
+  <% end %>
+</ul>
